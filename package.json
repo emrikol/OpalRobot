@@ -1,0 +1,40 @@
+{
+  "name": "OpalRobot",
+  "description": "OpalRobot WordPress Theme",
+  "version": "0.1.106",
+  "homepage": "https://github.com/emrikol/OpalRobot",
+  "keywords": [
+    "WordPress",
+    "Theme"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emrikol/OpalRobot"
+  },
+  "author": {
+    "name": "Derrick Tennant",
+    "email": "emrikol@gmail.com",
+    "url": "https://emrikol.com"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.6.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-compress": "^1.4.3",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-exec": "^1.0.1",
+    "grunt-less-to-sass": "0.0.10",
+    "grunt-text-replace": "^0.4.0",
+    "grunt-version": "^1.1.1",
+    "load-grunt-tasks": "^3.5.2",
+    "postcss-cli": "^2.6.0",
+    "postcss-flexbugs-fixes": "^2.1.0"
+  },
+  "scripts": {
+    "postcss": "postcss --config grunt/postcss.js --replace *.css"
+  },
+  "license": "GPL-3.0"
+}

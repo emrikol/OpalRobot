@@ -1,0 +1,4 @@
+[submodule "_build/FlexSlider"]
+	path = _build/FlexSlider
+	url = git@github.com:woocommerce/FlexSlider.git
+	branch = master
