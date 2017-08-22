@@ -6,6 +6,13 @@
 		<link rel="profile" href="http://gmpg.org/xfn/11">
 
 		<?php wp_head(); ?>
+		<?php if ( is_front_page() || is_home() ) : ?>
+		<script type="text/javascript" charset="utf-8">
+			jQuery( window ).load( function() {
+				jQuery( '.flexslider' ).flexslider();
+			} );
+		</script>
+		<?php endif; ?>
 	</head>
 
 	<body <?php body_class(); ?>>
@@ -21,16 +28,18 @@
 						<div class="site-branding col has-logo">
 							<?php
 								$custom_logo_id = get_theme_mod( 'custom_logo' );
-								$image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+								$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+								$custom_logo_desktop_url = get_theme_mod( 'custom_logo_desktop' );
 							?>
 								<a href="<?php home_url( '/' ); ?>">
-									<img src="<?php echo esc_url( $image[0] ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" />
+									<img class='hidden-lg-up' src="<?php echo esc_url( $logo[0] ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" />
+									<img class='hidden-md-down' src="<?php echo esc_url( $custom_logo_desktop_url ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" />
 								</a>
 						</div>
 
 						<?php else : ?>
 
-						<div class="site-branding col no-logo">
+						<div class="site-branding col col-md-9 no-logo">
 							<?php if ( is_front_page() && is_home() ) : ?>
 								<h1 class="site-title">
 									<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
@@ -53,36 +62,43 @@
 							endif; ?>
 						</div>
 
-
 						<?php endif; ?>
-						<div class="site-navigation col-3">
+
+						<div class="col-md-3 hidden-sm-down header-secondary-nav">
+						</div>
+
+						<div class="site-navigation col-3 col-md-12">
+
+							<div class="hamburger hamburger--squeeze hidden-md-up">
+								<div class="hamburger-box">
+									<div class="hamburger-inner"></div>
+								</div>
+							</div>
+
 							<?php if ( has_nav_menu( 'menu-1' ) ) : ?>
 							<nav id="site-navigation" class="main-navigation" role="navigation">
-								<div id="menuToggle">
-									<!--button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-										<?php esc_html_e( 'Primary Menu', 'opalrobot' ); ?>
-									</button-->
+								<!--button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+									<?php esc_html_e( 'Primary Menu', 'opalrobot' ); ?>
+								</button-->
 
-									<!-- A fake / hidden checkbox is used as click reciever, so you can use the :checked selector on it. -->
-									<input type="checkbox" />
-
-									<div class='hamburger-bun'>
-										<!-- Some spans to act as a hamburger. -->
-										<span></span>
-										<span></span>
-										<span></span>
-									</div>
-
-									<?php
-										wp_nav_menu( array(
-											'theme_location' => 'menu-1',
-											'menu_id' => 'primary-menu',
-											'container' => false,
-										) );
-									?>
-								</div>
+								<?php
+									wp_nav_menu( array(
+										'theme_location' => 'menu-1',
+										'menu_id' => 'primary-menu',
+										'container' => false,
+									) );
+								?>
 							</nav>
 							<?php endif; ?>
+							<script>
+								var hamburger = document.querySelector( '.hamburger' );
+								hamburger.addEventListener( 'click', function() {
+									hamburger.classList.toggle( 'is-active');
+									document.querySelector( '#primary-menu' ).classList.toggle( 'is-active');
+									document.querySelector( 'body' ).classList.toggle( 'no-scrolling');
+									document.querySelector( 'html' ).classList.toggle( 'no-scrolling');
+								} );
+							</script>
 						</div>
 
 					</div>

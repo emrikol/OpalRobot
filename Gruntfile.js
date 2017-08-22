@@ -85,6 +85,7 @@ module.exports = function( grunt ) {
 				},
 				files: {
 					'style.css': 'sass/style.scss',
+					'flexslider-custom.css': 'sass/flexslider-custom.scss',
 				}
 			}
 		},
@@ -92,7 +93,7 @@ module.exports = function( grunt ) {
 		watch: {
 			styles: {
 				files: [ 'sass/**/*.scss' ],
-				tasks: [ 'version::patch', 'sass' ],
+				tasks: [ 'version::patch', 'sass', 'beep' ],
 				options: {
 					debounceDelay: 500
 				}

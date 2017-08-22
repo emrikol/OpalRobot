@@ -1,0 +1,51 @@
+.flexslider {
+  border-radius: 0px;
+  box-shadow: none;
+  margin: 0px;
+  border: none; }
+  @media (min-width: 576px) {
+    .flexslider .slides {
+      width: 510px;
+      height: 287px; } }
+  @media (min-width: 768px) {
+    .flexslider {
+      padding: 36px; }
+      .flexslider .slides {
+        width: 618px;
+        height: 348px; } }
+  @media (min-width: 992px) {
+    .flexslider {
+      padding-right: 18px; }
+      .flexslider .slides {
+        width: 571px;
+        height: 321px; } }
+
+.flex-control-nav {
+  bottom: 0px;
+  z-index: 10; }
+  @media (min-width: 768px) {
+    .flex-control-nav {
+      position: absolute;
+      bottom: 36px;
+      width: 618px; } }
+
+@media (min-width: 768px) {
+  .flex-direction-nav {
+    position: absolute;
+    top: 50%;
+    width: 618px; }
+    .flex-direction-nav .flex-next {
+      right: 10px; }
+    .flex-direction-nav .flex-prev {
+      left: 10px; } }
+.flex-direction-nav a {
+  line-height: 1; }
+  .flex-direction-nav a:before {
+    color: #fff; }
+
+.flex-control-paging li a {
+  background: rgba(255, 255, 255, 0.5); }
+  .flex-control-paging li a.flex-active {
+    background: rgba(255, 255, 255, 0.9); }
+
+/*# sourceMappingURL=flexslider-custom.css.map */

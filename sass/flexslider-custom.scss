@@ -1,0 +1,73 @@
+// Impport bootstrap stuff
+@import '../_build/bootstrap-4.0.0-alpha.6/scss/_variables.scss';
+@import '../_build/bootstrap-4.0.0-alpha.6/scss/mixins/_breakpoints.scss';
+
+.flexslider {
+	border-radius: 0px;
+	box-shadow: none;
+	margin: 0px;
+	border: none;
+
+	@include media-breakpoint-up(sm) {
+		.slides {
+			width: 510px;
+			height: 287px;
+		}
+	}
+	@include media-breakpoint-up(md) {
+		padding: 36px;
+		.slides {
+			width: 618px;
+			height: 348px;
+		}
+	}
+	@include media-breakpoint-up(lg) {
+		padding-right: 18px;
+
+		.slides {
+			width: 571px;
+			height: 321px;
+		}
+
+	}
+}
+
+.flex-control-nav {
+	bottom: 0px;
+	z-index: 10;
+
+	@include media-breakpoint-up(md) {
+		position: absolute;
+		bottom: 36px;
+		width: 618px;
+	}
+}
+
+.flex-direction-nav {
+	@include media-breakpoint-up(md) {
+		position: absolute;
+		top: 50%;
+		width: 618px;
+		.flex-next {
+			right: 10px;
+		}
+
+		.flex-prev {
+			left: 10px;
+		}
+	}
+
+	a {
+		line-height: 1;
+		&:before {
+			color: #fff
+		}
+	}
+}
+
+.flex-control-paging li a {
+	&.flex-active {
+		background: rgba(255, 255, 255, 0.9);
+	}
+	background: rgba(255, 255, 255, 0.5);
+}
