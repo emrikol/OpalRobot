@@ -15,10 +15,14 @@
         height: 348px; } }
   @media (min-width: 992px) {
     .flexslider {
-      padding-right: 18px; }
+      padding-right: 0px; }
       .flexslider .slides {
-        width: 571px;
-        height: 321px; } }
+        width: 600px;
+        height: 338px; }
+      .flexslider .flex-direction-nav .flex-next {
+        right: 28px; }
+      .flexslider:hover .flex-direction-nav .flex-next {
+        right: 28px; } }
 
 .flex-control-nav {
   bottom: 0px;

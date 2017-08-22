@@ -32,8 +32,8 @@
 								$custom_logo_desktop_url = get_theme_mod( 'custom_logo_desktop' );
 							?>
 								<a href="<?php home_url( '/' ); ?>">
-									<img class='hidden-lg-up' src="<?php echo esc_url( $logo[0] ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" />
-									<img class='hidden-md-down' src="<?php echo esc_url( $custom_logo_desktop_url ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" />
+									<img class='d-lg-none d-xl-none' src="<?php echo esc_url( $logo[0] ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" />
+									<img class='d-none d-lg-block' src="<?php echo esc_url( $custom_logo_desktop_url ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" />
 								</a>
 						</div>
 
@@ -64,12 +64,12 @@
 
 						<?php endif; ?>
 
-						<div class="col-md-3 hidden-sm-down header-secondary-nav">
+						<div class="col-md-3 d-none d-md-block header-secondary-nav">
 						</div>
 
 						<div class="site-navigation col-3 col-md-12">
 
-							<div class="hamburger hamburger--squeeze hidden-md-up">
+							<div class="hamburger hamburger--squeeze d-md-none d-lg-none d-xl-none">
 								<div class="hamburger-box">
 									<div class="hamburger-inner"></div>
 								</div>
