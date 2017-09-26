@@ -45,6 +45,7 @@ if ( ! function_exists( 'opalrobot_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'opalrobot' ),
+			'menu-2' => esc_html__( 'Secondary', 'opalrobot' ),
 		) );
 
 		/*
@@ -158,6 +159,11 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Default Menus.
+ */
+require get_template_directory() . '/inc/default-menus.php';
 
 /**
  * Load Jetpack compatibility file.

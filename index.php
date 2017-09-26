@@ -19,10 +19,14 @@
 						<div class="col-12 col-lg-4">
 							<div class="primary-links">
 								<div class="row justify-content-between align-items-center">
-									<div class="col-6 col-md-3 col-lg-12"><a href="#">Events</a></div>
-									<div class="col-6 col-md-3 col-lg-12"><a href="#">Connect</a></div>
-									<div class="col-6 col-md-3 col-lg-12"><a href="#">Livestream</a></div>
-									<div class="col-6 col-md-3 col-lg-12"><a href="#">Sermon Archive</a></div>
+									<?php
+										wp_nav_menu( array(
+										'container' => '',
+										'theme_location' => 'menu-2',
+										'items_wrap' => '%3$s',
+										'walker'  => new OpalRobot_Default_Secondary_Walker(),
+										) );
+									?>
 								</div>
 							</div>
 							<div class="secondary-links d-lg-none d-xl-none">
