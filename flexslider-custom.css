@@ -23,6 +23,16 @@
         right: 28px; }
       .flexslider:hover .flex-direction-nav .flex-next {
         right: 28px; } }
+  @media (min-width: 1200px) {
+    .flexslider {
+      padding-right: 0px; }
+      .flexslider .slides {
+        width: 750px;
+        height: 422px; }
+      .flexslider .flex-direction-nav .flex-next {
+        right: -122px; }
+      .flexslider:hover .flex-direction-nav .flex-next {
+        right: -122px; } }
 
 .flex-control-nav {
   bottom: 0px;
@@ -32,6 +42,11 @@
       position: absolute;
       bottom: 36px;
       width: 618px; } }
+  @media (min-width: 1200px) {
+    .flex-control-nav {
+      position: absolute;
+      bottom: 36px;
+      width: 750px; } }
 
 @media (min-width: 768px) {
   .flex-direction-nav {

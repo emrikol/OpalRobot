@@ -5,7 +5,7 @@ Theme URI: http://underscores.me/
 Author: Derrick Tennant
 Author URI: http://underscores.me/
 Description: 🤖
-Version: 0.1.317
+Version: 0.1.341
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: opalrobot
@@ -3792,6 +3792,10 @@ body.admin-bar #primary-menu {
       width: 650px;
       float: right;
       z-index: 10; } }
+  @media (min-width: 1200px) {
+    #primary-menu {
+      top: -200px;
+      width: 785px; } }
 
 .hamburger {
   padding: 6px 6px;
@@ -3892,6 +3896,10 @@ body.admin-bar #primary-menu {
       width: 218px;
       height: 180px;
       margin-left: 0px; } }
+  @media (min-width: 1200px) {
+    .site-branding img {
+      width: 313px;
+      height: 236px; } }
 
 #primary {
   margin-bottom: 15px; }
@@ -3904,6 +3912,12 @@ body.admin-bar #primary-menu {
       padding-left: 0px;
       width: 277px;
       flex: none; } }
+  @media (min-width: 1200px) {
+    #primary .col-lg-8 {
+      width: 801px;
+      max-width: 801px; }
+    #primary .col-lg-4 {
+      width: 327px; } }
 
 .primary-links {
   background: #fff;
@@ -3963,6 +3977,18 @@ body.admin-bar #primary-menu {
         padding-bottom: 0px; }
         .primary-links .col-lg-12:nth-child(4) a {
           padding-left: 20px; } }
+  @media (min-width: 1200px) {
+    .primary-links {
+      height: 494px; }
+      .primary-links .col-lg-12:nth-child(1) {
+        padding-bottom: 37px; }
+      .primary-links .col-lg-12 {
+        padding-bottom: 36px; }
+      .primary-links a {
+        width: 239px;
+        height: 78px;
+        font-size: 25px;
+        line-height: 78px; } }
 
 .secondary-links {
   background: #fff;
@@ -4057,6 +4083,32 @@ body.admin-bar #primary-menu {
       float: right; }
     .footer-navigation .col-lg-3 {
       width: auto; } }
+@media (min-width: 1200px) {
+  .footer-navigation {
+    width: 513px;
+    right: -100px;
+    top: 183px;
+    padding: 0px; }
+    .footer-navigation .col-3:nth-child(1) {
+      width: 120px; }
+      .footer-navigation .col-3:nth-child(1) a {
+        width: 120px;
+        height: 39.383px; }
+    .footer-navigation .col-3:nth-child(2) {
+      width: 104.527px; }
+      .footer-navigation .col-3:nth-child(2) a {
+        width: 104.527px;
+        height: 40px; }
+    .footer-navigation .col-3:nth-child(3) {
+      width: 56.662px; }
+      .footer-navigation .col-3:nth-child(3) a {
+        width: 65.084px;
+        height: 50px; }
+    .footer-navigation .col-3:nth-child(4) {
+      width: 50px; }
+      .footer-navigation .col-3:nth-child(4) a {
+        width: 50px;
+        height: 50px; } }
 
 .site-footer p {
   margin-top: 15px;
@@ -4083,6 +4135,17 @@ body.admin-bar #primary-menu {
 
   .site-content {
     margin-top: -44px; }
+
+  .site-info {
+    position: absolute;
+    top: 0px;
+    height: 277px;
+    width: 898px;
+    left: 50%;
+    margin-left: -449px; } }
+@media (min-width: 1200px) {
+  .container {
+    width: 1128px; }
 
   .site-info {
     position: absolute;
@@ -4121,6 +4184,16 @@ body.admin-bar #primary-menu {
     .tertiary-links a.image:nth-child(2) {
       left: 350px;
       background-image: url("images/map-directions-bg.jpg"); }
+  @media (min-width: 1200px) {
+    .tertiary-links {
+      height: 231px; }
+      .tertiary-links a.image {
+        width: 358px;
+        height: 196px;
+        line-height: 196px;
+        font-size: 40px; }
+        .tertiary-links a.image:nth-child(2) {
+          left: 430px; } }
 
 .contact-information {
   position: absolute;
@@ -4129,6 +4202,7 @@ body.admin-bar #primary-menu {
   font-weight: lighter;
   padding: 0px 36px 36px 36px;
   background: white;
+  font-size: 13.5px;
   font-size: 13.5px;
   height: 185px;
   max-height: 185px;
@@ -4152,5 +4226,11 @@ body.admin-bar #primary-menu {
       float: right;
       padding-left: 0.33em;
       background: white; }
+  @media (min-width: 1200px) {
+    .contact-information {
+      padding: 0px;
+      font-size: 18px;
+      left: 823px;
+      width: 239px; } }
 
 /*# sourceMappingURL=style.css.map */

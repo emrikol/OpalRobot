@@ -40,6 +40,26 @@
 			}
 		}
 	}
+
+	@include media-breakpoint-up(xl) {
+		//padding-right: 18px;
+		padding-right: 0px;
+
+		.slides {
+			width: 750px;
+			height: 422px;
+		}
+
+		.flex-direction-nav .flex-next {
+			right: -122px;
+		}
+
+		&:hover {
+			.flex-direction-nav .flex-next {
+				right: -122px;
+			}
+		}
+	}
 }
 
 .flex-control-nav {
@@ -50,6 +70,12 @@
 		position: absolute;
 		bottom: 36px;
 		width: 618px;
+	}
+
+	@include media-breakpoint-up(xl) {
+		position: absolute;
+		bottom: 36px;
+		width: 750px;
 	}
 }
 

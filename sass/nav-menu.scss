@@ -86,6 +86,11 @@ body {
 		z-index: 10;
 	}
 
+	@include media-breakpoint-up(xl) {
+		top: -236px + 36px; // Logo height - Standard Padding
+		width: 1098px - 313px; // Standard width - Logo Width
+	}
+
 }
 
 // Hamburger

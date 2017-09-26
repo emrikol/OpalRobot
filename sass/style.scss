@@ -4,7 +4,7 @@ Theme URI: http://underscores.me/
 Author: Derrick Tennant
 Author URI: http://underscores.me/
 Description: 🤖
-Version: 0.1.317
+Version: 0.1.341
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: opalrobot
@@ -173,6 +173,13 @@ body {
 			margin-left: 0px;
 		}
 	}
+
+	@include media-breakpoint-up(xl) {
+		img {
+			width: 313px;
+			height: 236px;
+		}
+	}
 }
 
 #primary {
@@ -188,6 +195,16 @@ body {
 			padding-left: 0px;
 			width: 277px;
 			flex: none;
+		}
+	}
+
+	@include media-breakpoint-up(xl) {
+		.col-lg-8 {
+			width: 750px + 36px + 15px; // Width + left border + padding
+			max-width: 750px + 36px + 15px; // Width + left border + padding
+		}
+		.col-lg-4 {
+			width: 327px;
 		}
 	}
 }
@@ -270,6 +287,25 @@ body {
 				padding-left: 20px;
 			}
 		}
+	}
+
+	@include media-breakpoint-up(xl) {
+		height: 494px;
+
+		.col-lg-12:nth-child(1) {
+			padding-bottom: 37px;
+		}
+		.col-lg-12 {
+			padding-bottom: 36px;
+		}
+
+		a {
+			width: 239px;
+			height: 78px;
+			font-size: 25px;
+			line-height: 78px;
+		}
+
 	}
 
 }
@@ -371,7 +407,6 @@ body {
 		.col-3:nth-child(1) {
 			width: 104.472px;
 			a {
-				//background-image: url('images/wee-village.svg');
 				width: 104.472px;
 				height: 34.288px;
 			}
@@ -379,7 +414,6 @@ body {
 		.col-3:nth-child(2)  {
 			width: 91.001px;
 			a {
-				//background-image: url('images/marketplace.svg');
 				width: 91.001px;
 				height: 34.823px;
 			}
@@ -387,7 +421,6 @@ body {
 		.col-3:nth-child(3) {
 			width: 56.662px;
 			a {
-				//background-image: url('images/courtyard.svg');
 				width: 56.662px;
 				height: 43.53px;
 			}
@@ -395,7 +428,6 @@ body {
 		.col-3:nth-child(4) {
 			width: 43.53px;
 			a {
-				//background-image: url('images/highway-111.svg');
 				width: 43.53px;
 				height: 43.53px;
 			}
@@ -408,6 +440,42 @@ body {
 
 		.col-lg-3 {
 			width: auto;
+		}
+	}
+
+	@include media-breakpoint-up(xl) {
+		width: 513px;
+		right: -100px;
+		top: 183px;
+		padding: 0px;
+
+		.col-3:nth-child(1) {
+			width: 120px;
+			a {
+				width: 120px;
+				height: 39.383px;
+			}
+		}
+		.col-3:nth-child(2)  {
+			width: 104.527px;
+			a {
+				width: 104.527px;
+				height: 40px;
+			}
+		}
+		.col-3:nth-child(3) {
+			width: 56.662px;
+			a {
+				width: 65.084px;
+				height: 50px;
+			}
+		}
+		.col-3:nth-child(4) {
+			width: 50px;
+			a {
+				width: 50px;
+				height: 50px;
+			}
 		}
 	}
 
@@ -461,6 +529,26 @@ body {
 	}
 }
 
+@include media-breakpoint-up(xl) {
+	.container {
+		width: 1098px + 30px; // Width + padding
+	}
+
+	//.site-content {
+	//	margin-top: -44px;
+	//}
+
+	.site-info {
+		position: absolute;
+		top: 0px;
+		height: 277px;
+		width: 898px;
+		left: 50%;
+		margin-left: -1 * 898px / 2;
+		//z-index: -1;
+	}
+}
+
 .tertiary-links {
 	padding: 0px 0px 36px 36px;
 	background-color: #fff;
@@ -498,6 +586,20 @@ body {
 		}
 
 	}
+	
+	@include media-breakpoint-up(xl) {
+		height: 196px + 35px; // image height + bottom padding
+		a.image {
+			width: 358px;
+			height: 196px;
+			line-height: 196px;
+			font-size: 40px;
+			&:nth-child(2) {
+				left: 36px + 358px + 36px; // left padding + width + center padding.
+			}
+		}
+	}
+
 }
 
 .contact-information {
@@ -507,6 +609,7 @@ body {
 	font-weight: lighter;
 	padding: 0px 36px 36px 36px;
 	background: white;
+	font-size: 13.5px;
 	font-size: 13.5px;
 	height: 185px;
 	max-height: 185px;
@@ -536,5 +639,12 @@ body {
 				background: white;
 			}
 		}
+	}
+
+	@include media-breakpoint-up(xl) {
+		padding: 0px;
+		font-size: 18px;
+		left: 823px;
+		width: 239px;
 	}
 }
