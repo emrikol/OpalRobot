@@ -5,7 +5,8 @@
 							<main id="main" class="site-main">
 
 								<?php
-								while ( have_posts() ) : the_post();
+								while ( have_posts() ) :
+									the_post();
 
 									get_template_part( 'template-parts/content', 'page' );
 
@@ -23,11 +24,11 @@
 							<div class="primary-links">
 								<div class="row justify-content-between align-items-center">
 									<?php
-										wp_nav_menu( array(
-										'container' => '',
-										'theme_location' => 'menu-2',
-										'items_wrap' => '%3$s',
-										'walker'  => new OpalRobot_Default_Secondary_Walker(),
+										opalrobot_nav_menu( array(
+											'container' => '',
+											'theme_location' => 'menu-2',
+											'items_wrap' => '%3$s',
+											'walker'  => new OpalRobot_Default_Secondary_Walker(),
 										) );
 									?>
 								</div>
@@ -61,4 +62,5 @@
 						</div>
 					</div>
 				</div>
-<?php get_footer();
+<?php
+get_footer();

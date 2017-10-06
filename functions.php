@@ -120,7 +120,7 @@ add_action( 'widgets_init', 'opalrobot_widgets_init' );
 function opalrobot_scripts() {
 	wp_enqueue_style( 'opalrobot', get_stylesheet_uri() );
 
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700', array( 'opalrobot-style') );
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700', array( 'opalrobot' ) );
 
 	if ( is_front_page() || is_home() ) {
 		wp_enqueue_style( 'flexslider-custom', get_stylesheet_directory_uri() . '/flexslider-custom.css', array( 'flexslider' ) );
@@ -185,3 +185,17 @@ function opalrobot_serve_mime_types( $mimes ) {
 	return $mimes;
 }
 add_filter( 'mime_types', 'opalrobot_serve_mime_types' );
+
+if ( ! function_exists( 'wpcom_vip_cached_nav_menu' ) ) {
+	require_once( dirname( __FILE__ ) . '/plugins/cache-nav-menu.php' );
+}
+
+function opalrobot_nav_menu( $args ) {
+	if ( function_exists( 'wpcom_vip_cached_nav_menu' ) ) {
+		wpcom_vip_cached_nav_menu( $args );
+	} else {
+		wp_nav_menu( $args );
+	}
+}
+
+require_once( dirname( __FILE__ ) . '/plugins/flexslider-admin/flexslider-admin.php' );
