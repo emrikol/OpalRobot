@@ -58,7 +58,7 @@ class OpalRobot_Default_Secondary_Walker extends Walker {
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$output .= sprintf( "\n<div class='col-6 col-md-3 col-lg-12'><a href='%s' class='%s'>%s</a></div>\n",
 			esc_url( $item->url ),
-			( $item->object_id === get_the_ID() ) ? 'current' : '',
+			( get_the_ID() === $item->object_id ) ? 'current' : '',
 			esc_html( $item->title )
 		);
 	}

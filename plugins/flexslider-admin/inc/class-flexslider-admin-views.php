@@ -27,6 +27,7 @@ class Flexslider_Admin_Views extends Flexslider_Admin {
 
 	// Customize and move featured image box to main column
 	function slide_image_box() {
+		// translators: 1st %d is width in pixels, 2nd %d is height in pixels
 		$title = sprintf( esc_html__( 'Slide Image (%1$dx%2$d)', 'flexslider-admin' ),
 			absint( apply_filters( 'flexslider_admin_slide_width', 0 ) ),
 			absint( apply_filters( 'flexslider_admin_slide_height', 0 ) )

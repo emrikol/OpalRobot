@@ -74,12 +74,14 @@ class Flexslider_Admin_CPT extends Flexslider_Admin {
 		$messages[ $this->cpt ] = array(
 			1  => esc_html__( 'Slide updated.', 'flexslider-admin' ),
 			4  => esc_html__( 'Slide updated.', 'flexslider-admin' ),
+			// translators: %s is revision title
 			5  => isset( $_GET['revision'] ) ? sprintf( esc_html__( 'Slide restored to revision from %s', 'flexslider-admin' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false, // WPCS: input var okay. CSRF ok.
 			6  => esc_html__( 'Slide published.', 'flexslider-admin' ),
 			7  => esc_html__( 'Slide saved.', 'flexslider-admin' ),
 			8  => esc_html__( 'Slide submitted.', 'flexslider-admin' ),
 			9  => sprintf(
-				wp_kses_post( __( 'Legacy Redirect scheduled for: <strong>%1$s</strong>.', 'flexslider-admin' ) ),
+				// translators: %s is the scheduled datetime
+				wp_kses_post( __( 'Slide scheduled for: <strong>%1$s</strong>.', 'flexslider-admin' ) ),
 				esc_html( date_i18n( 'M j, Y @ G:i', strtotime( $post->post_date ) ) )
 			),
 			10 => esc_html__( 'Slide draft updated.' ),
@@ -90,10 +92,15 @@ class Flexslider_Admin_CPT extends Flexslider_Admin {
 
 	function bulk_updated_messages( $bulk_messages, $bulk_counts ) {
 		$bulk_messages['fsa-slide '] = array(
+			// translators: %s is the number of slides updated
 			'updated'   => esc_html( _n( '%s Slide updated.', '%s Slides updated.', $bulk_counts['updated'] ) ),
+			// translators: %s is the number of slides not updated
 			'locked'    => esc_html( _n( '%s Slide not updated, somebody is editing it.', '%s Slides not updated, somebody is editing them.', $bulk_counts['locked'] ) ),
+			// translators: %s is the number of slides deleted
 			'deleted'   => esc_html( _n( '%s Slide permanently deleted.', '%s Slides permanently deleted.', $bulk_counts['deleted'] ) ),
+			// translators: %s is the number of slides moved to trash
 			'trashed'   => esc_html( _n( '%s Slide moved to the Trash.', '%s Slides moved to the Trash.', $bulk_counts['trashed'] ) ),
+			// translators: %s is the number of slides restored from trash
 			'untrashed' => esc_html( _n( '%s Slide restored from the Trash.', '%s Slides restored from the Trash.', $bulk_counts['untrashed'] ) ),
 		);
 

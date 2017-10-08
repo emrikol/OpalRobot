@@ -110,8 +110,12 @@ if ( ! function_exists( 'opalrobot_setup' ) ) :
 
 		if ( class_exists( 'Flexslider_Admin' ) ) {
 			Flexslider_Admin_Views::add_sizes( $sizes );
-			add_filter( 'flexslider_admin_slide_width', function( $width ) { return 750; } );
-			add_filter( 'flexslider_admin_slide_height', function( $height ) { return 422; } );
+			add_filter( 'flexslider_admin_slide_width', function( $width ) {
+				return 750;
+			} );
+			add_filter( 'flexslider_admin_slide_height', function( $height ) {
+				return 422;
+			} );
 		}
 
 	}
@@ -174,7 +178,17 @@ function opalrobot_scripts() {
 
 		$flexslider_inline = <<<EOT
 jQuery( window ).load( function() {
-	jQuery( '.flexslider' ).flexslider();
+	jQuery( '.flexslider' ).flexslider( {
+		animation: flexslider_admin.data.animation,
+		easing: flexslider_admin.data.easing,
+		direction: flexslider_admin.data.direction,
+		slideshowSpeed: flexslider_admin.data.slideshowSpeed,
+		animationSpeed: flexslider_admin.data.animationSpeed,
+		initDelay: flexslider_admin.data.initDelay,
+		reverse: flexslider_admin.data.reverse,
+		pauseOnAction: flexslider_admin.data.pauseOnAction,
+		pauseOnHover: flexslider_admin.data.pauseOnHover,
+	} );
 } );
 EOT;
 
@@ -186,8 +200,6 @@ EOT;
 	}
 
 	/*
-	wp_enqueue_script( 'opalrobot-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
 	wp_enqueue_script( 'opalrobot-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -221,7 +233,7 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Default Menus.
  */
-require get_template_directory() . '/inc/default-menus.php';
+require get_template_directory() . '/inc/class-opalrobot-default-secondary-walker.php';
 
 /**
  * Load Jetpack compatibility file.
