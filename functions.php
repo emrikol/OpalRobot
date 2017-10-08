@@ -80,6 +80,40 @@ if ( ! function_exists( 'opalrobot_setup' ) ) :
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
+
+		$sizes = array(
+			array(
+				'name' => 'slides-xl',
+				'width' => '750',
+				'height' => '422',
+				'crop' => true,
+			),
+			array(
+				'name' => 'slides-lg',
+				'width' => '600',
+				'height' => '337',
+				'crop' => true,
+			),
+			array(
+				'name' => 'slides-md',
+				'width' => '618',
+				'height' => '348',
+				'crop' => true,
+			),
+			array(
+				'name' => 'slides-sm',
+				'width' => '510',
+				'height' => '287',
+				'crop' => true,
+			),
+		);
+
+		if ( class_exists( 'Flexslider_Admin' ) ) {
+			Flexslider_Admin_Views::add_sizes( $sizes );
+			add_filter( 'flexslider_admin_slide_width', function( $width ) { return 750; } );
+			add_filter( 'flexslider_admin_slide_height', function( $height ) { return 422; } );
+		}
+
 	}
 endif;
 add_action( 'after_setup_theme', 'opalrobot_setup' );
@@ -123,9 +157,32 @@ function opalrobot_scripts() {
 	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700', array( 'opalrobot' ) );
 
 	if ( is_front_page() || is_home() ) {
+
+		$flexslider_vars = array(
+			'data' => array(
+				'animation' => get_theme_mod( 'fsa-slides_animation', 'fade' ),
+				'easing' => get_theme_mod( 'fsa-slides_easing', 'swing' ),
+				'direction' => get_theme_mod( 'fsa-slides_direction', 'horizontal' ),
+				'slideshowSpeed' => ( get_theme_mod( 'fsa-slides_speed' ) ? get_theme_mod( 'fsa-slides_speed' ) : 7 ) * 1000,
+				'animationSpeed' => ( get_theme_mod( 'fsa-slides_animation_speed' ) ? get_theme_mod( 'fsa-slides_animation_speed' ) : .6 ) * 1000,
+				'initDelay' => ( get_theme_mod( 'fsa-slides_start_delay' ) ? get_theme_mod( 'fsa-slides_start_delay' ) : 0 ) * 1000,
+				'reverse' => get_theme_mod( 'fsa-slides_reverse' ) ? get_theme_mod( 'fsa-slides_reverse' ) : false,
+				'pauseOnAction' => get_theme_mod( 'fsa-slides_pause_interaction' ) ? get_theme_mod( 'fsa-slides_pause_interaction' ) : false,
+				'pauseOnHover' => get_theme_mod( 'fsa-slides_pause_hover' ) ? get_theme_mod( 'fsa-slides_pause_hover' ) : true,
+			),
+		);
+
+		$flexslider_inline = <<<EOT
+jQuery( window ).load( function() {
+	jQuery( '.flexslider' ).flexslider();
+} );
+EOT;
+
 		wp_enqueue_style( 'flexslider-custom', get_stylesheet_directory_uri() . '/flexslider-custom.css', array( 'flexslider' ) );
 		wp_enqueue_style( 'flexslider', get_stylesheet_directory_uri() . '/flexslider/flexslider.css' );
 		wp_enqueue_script( 'flexslider', get_stylesheet_directory_uri() . '/flexslider/jquery.flexslider.js', array( 'jquery' ) );
+		wp_add_inline_script( 'flexslider', $flexslider_inline );
+		wp_localize_script( 'flexslider', 'flexslider_admin', $flexslider_vars );
 	}
 
 	/*
@@ -139,6 +196,7 @@ function opalrobot_scripts() {
 	*/
 }
 add_action( 'wp_enqueue_scripts', 'opalrobot_scripts' );
+
 
 /**
  * Implement the Custom Header feature.

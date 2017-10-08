@@ -6,13 +6,6 @@
 		<link rel="profile" href="http://gmpg.org/xfn/11">
 
 		<?php wp_head(); ?>
-		<?php if ( is_front_page() || is_home() ) : ?>
-		<script type="text/javascript" charset="utf-8">
-			jQuery( window ).load( function() {
-				jQuery( '.flexslider' ).flexslider();
-			} );
-		</script>
-		<?php endif; ?>
 	</head>
 
 	<body <?php body_class(); ?>>
