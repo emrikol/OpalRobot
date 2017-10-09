@@ -1,20 +1,42 @@
 <?php
+/**
+ * Main file for Flexslider_Admin_Customizer class.
+ *
+ * @package WordPress
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * The child class for managing Flexslider Admin customizer settings.
+ */
 class Flexslider_Admin_Customizer extends Flexslider_Admin {
+	/**
+	 * Primary Flexslider Admin customizer settings constructor.
+	 *
+	 * Sets up WordPress hooks.
+	 *
+	 * @return void
+	 */
 	public function __construct() {
 		add_action( 'customize_register', array( $this, 'customize_register' ) );
 	}
 
+	/**
+	 * Registers Flexslider Admin settings in the customizer.
+	 *
+	 * @param WP_Customize_Manager $wp_customize WP_Customize_Manager instance.
+	 *
+	 * @return void
+	 */
 	function customize_register( $wp_customize ) {
 		$wp_customize->add_section( 'fsa-slides', array(
 			'title' => esc_html__( 'Slider', 'textdomain' ),
 		) );
 
-		// Animation Type
+		// Animation Type.
 		$wp_customize->add_setting( 'fsa-slides_animation', array(
 			'sanitize_callback' => 'sanitize_key',
 			'default' => 'fade',
@@ -30,7 +52,7 @@ class Flexslider_Admin_Customizer extends Flexslider_Admin {
 			),
 		) );
 
-		// Easing
+		// Easing.
 		$wp_customize->add_setting( 'fsa-slides_easing', array(
 			'sanitize_callback' => 'sanitize_key',
 			'default' => 'swing',
@@ -47,7 +69,7 @@ class Flexslider_Admin_Customizer extends Flexslider_Admin {
 			),
 		) );
 
-		// Direction
+		// Direction.
 		$wp_customize->add_setting( 'fsa-slides_direction', array(
 			'sanitize_callback' => 'sanitize_key',
 			'default' => 'horizontal',
@@ -63,7 +85,7 @@ class Flexslider_Admin_Customizer extends Flexslider_Admin {
 			),
 		) );
 
-		// Slide Speed
+		// Slide Speed.
 		$wp_customize->add_setting( 'fsa-slides_speed', array(
 			'default' => 7,
 		) );
@@ -80,7 +102,7 @@ class Flexslider_Admin_Customizer extends Flexslider_Admin {
 			),
 		) );
 
-		// Animation Speed
+		// Animation Speed.
 		$wp_customize->add_setting( 'fsa-slides_animation_speed', array(
 			'default' => .6,
 		) );
@@ -97,7 +119,7 @@ class Flexslider_Admin_Customizer extends Flexslider_Admin {
 			),
 		) );
 
-		// Start Delay
+		// Start Delay.
 		$wp_customize->add_setting( 'fsa-slides_start_delay', array(
 			'default' => 0,
 		) );
@@ -114,7 +136,7 @@ class Flexslider_Admin_Customizer extends Flexslider_Admin {
 			),
 		) );
 
-		// Reverse
+		// Reverse.
 		$wp_customize->add_setting( 'fsa-slides_reverse', array(
 			'default' => false,
 		) );
@@ -125,7 +147,7 @@ class Flexslider_Admin_Customizer extends Flexslider_Admin {
 			'label' => esc_html__( 'Reverse the animation direction' ),
 		) );
 
-		// Randomize Slides
+		// Randomize Slides.
 		$wp_customize->add_setting( 'fsa-slides_randomize', array(
 			'default' => false,
 		) );
@@ -136,7 +158,7 @@ class Flexslider_Admin_Customizer extends Flexslider_Admin {
 			'label' => esc_html__( 'Randomize slide order' ),
 		) );
 
-		// Pause on Interaction
+		// Pause on Interaction.
 		$wp_customize->add_setting( 'fsa-slides_pause_interaction', array(
 			'default' => true,
 		) );
@@ -148,7 +170,7 @@ class Flexslider_Admin_Customizer extends Flexslider_Admin {
 			'description' => esc_html__( 'Pause the slideshow when interacting with control elements, highly recommended.', 'textdomain' ),
 		) );
 
-		// Pause on Hover
+		// Pause on Hover.
 		$wp_customize->add_setting( 'fsa-slides_pause_hover', array(
 			'default' => false,
 		) );

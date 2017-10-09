@@ -1,12 +1,32 @@
 <?php
+/**
+ * Main file for Flexslider_Admin_Views class.
+ *
+ * @package WordPress
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * The child class for managing Flexslider Admin views.
+ */
 class Flexslider_Admin_Views extends Flexslider_Admin {
+	/**
+	 * Holds the structure of metabox data.
+	 *
+	 * @var array
+	 */
 	private $meta_box_data;
 
+	/**
+	 * Primary Flexslider Admin Views constructor.
+	 *
+	 * Sets up data and WordPress hooks.
+	 *
+	 * @return void
+	 */
 	public function __construct() {
 		$this->meta_box_data = array(
 			'slide_url' => array(
@@ -25,9 +45,13 @@ class Flexslider_Admin_Views extends Flexslider_Admin {
 		add_filter( 'manage_edit-fsa-slide_columns', array( $this, 'edit_columns' ) );
 	}
 
-	// Customize and move featured image box to main column
+	/**
+	 * Customize and move featured image box to main column.
+	 *
+	 * @return void
+	 */
 	function slide_image_box() {
-		// translators: 1st %d is width in pixels, 2nd %d is height in pixels
+		// translators: 1st %d is width in pixels, 2nd %d is height in pixels.
 		$title = sprintf( esc_html__( 'Slide Image (%1$dx%2$d)', 'flexslider-admin' ),
 			absint( apply_filters( 'flexslider_admin_slide_width', 0 ) ),
 			absint( apply_filters( 'flexslider_admin_slide_height', 0 ) )
@@ -37,21 +61,38 @@ class Flexslider_Admin_Views extends Flexslider_Admin {
 		add_meta_box( 'postimagediv', $title, 'post_thumbnail_meta_box', $this->cpt, 'normal', 'high' );
 	}
 
-	// Remove Jetpack likes metabox
+	/**
+	 * Remove Jetpack likes metabox.
+	 *
+	 * @return void
+	 */
 	function remove_jetpack_likes_metabox() {
 		remove_meta_box( 'sharing_meta', array( $this->cpt ), 'advanced' );
 	}
 
-	// Remove permalink metabox
+	/**
+	 * Remove permalink metabox.
+	 *
+	 * @return void
+	 */
 	function remove_permalink_meta_box() {
 		remove_meta_box( 'slugdiv', $this->cpt, 'core' );
 	}
 
-	// Adds meta box for Slide URL
+	/**
+	 * Adds meta box for Slide URL.
+	 *
+	 * @return void
+	 */
 	function create_url_meta_box() {
 		add_meta_box( 'flexslider-admin-url-box', esc_html__( 'Slide Link','flexslider-admin' ), array( $this, 'output_url_meta_box' ), $this->cpt, 'normal', 'low' );
 	}
 
+	/**
+	 * Outputs markup for Slide URL metabox.
+	 *
+	 * @return void
+	 */
 	function output_url_meta_box() {
 		global $post;
 
@@ -70,7 +111,13 @@ class Flexslider_Admin_Views extends Flexslider_Admin {
 		}
 	}
 
-	// Save and retrieve the Slide URL data
+	/**
+	 * Save and retrieve the Slide URL data.
+	 *
+	 * @param int $post_id The post ID.
+	 *
+	 * @return void
+	 */
 	function save_postdata( $post_id ) {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
@@ -109,7 +156,13 @@ class Flexslider_Admin_Views extends Flexslider_Admin {
 		}
 	}
 
-	// Adds slide image and link to slides column view
+	/**
+	 * Adds slide image and link to slides column view.
+	 *
+	 * @param array $columns The filterable columns.
+	 *
+	 * @return array
+	 */
 	function edit_columns( $columns ) {
 		$columns = array(
 			'cb'         => '<input type="checkbox" />',
@@ -122,6 +175,13 @@ class Flexslider_Admin_Views extends Flexslider_Admin {
 		return $columns;
 	}
 
+	/**
+	 * Provides data for custom columns.
+	 *
+	 * @param array $column The filterable columns.
+	 *
+	 * @return void
+	 */
 	function custom_columns( $column ) {
 		global $post;
 
@@ -139,6 +199,13 @@ class Flexslider_Admin_Views extends Flexslider_Admin {
 		}
 	}
 
+	/**
+	 * Adds custom image sizes for Sizes, including 2x sizes.
+	 *
+	 * @param array $sizes Image sizes to add.
+	 *
+	 * @return void
+	 */
 	function add_sizes( $sizes ) {
 		if ( empty( $sizes ) || ! is_array( $sizes ) ) {
 			return;
