@@ -106,6 +106,12 @@ if ( ! function_exists( 'opalrobot_setup' ) ) :
 				'height' => '287',
 				'crop' => true,
 			),
+			array(
+				'name' => 'slides-thumbnail',
+				'width' => '150',
+				'height' => '84',
+				'crop' => true,
+			),
 		);
 
 		if ( class_exists( 'Flexslider_Admin' ) ) {
@@ -115,6 +121,10 @@ if ( ! function_exists( 'opalrobot_setup' ) ) :
 			} );
 			add_filter( 'flexslider_admin_slide_height', function( $height ) {
 				return 422;
+			} );
+
+			add_filter( 'flexslider_admin_thumbnail_size', function ( $size ) {
+				return 'slides-thumbnail';
 			} );
 		}
 
@@ -268,4 +278,4 @@ function opalrobot_nav_menu( $args ) {
 	}
 }
 
-require_once( dirname( __FILE__ ) . '/plugins/flexslider-admin/flexslider-admin.php' );
+require_once( dirname( __FILE__ ) . '/plugins/Flexslider-Admin/flexslider-admin.php' );

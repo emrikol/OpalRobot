@@ -2,3 +2,6 @@
 	path = _build/FlexSlider
 	url = git@github.com:woocommerce/FlexSlider.git
 	branch = master
+[submodule "plugins/Flexslider-Admin"]
+	path = plugins/Flexslider-Admin
+	url = git@github.com:emrikol/Flexslider-Admin.git

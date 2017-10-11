@@ -4,15 +4,25 @@
 						<div class="col-12 col-lg-8">
 							<div class="flexslider">
 								<ul class="slides">
-									<li>
-										<img src="https://cldup.com/JA0iDx5UJk.png" />
-									</li>
-									<li>
-										<img src="https://cldup.com/JA0iDx5UJk.png" />
-									</li>
-									<li>
-										<img src="https://cldup.com/JA0iDx5UJk.png" />
-									</li>
+									<?php
+										foreach ( Flexslider_Admin::get_slides() as $slide_id => $slide ) {
+											$slide_image_html = get_the_post_thumbnail( $slide_id );
+											$slide_title = get_the_title( $slide_id );
+											$slide_link = $slide['url'];
+
+											if ( ! empty( $slide_link ) ) {
+												$slide_html = sprintf( '<a href="%s" title="%s">%s</a>',
+													esc_url( $slide_link ),
+													esc_attr( $slide_title ),
+													$slide_image_html
+												);
+											} else {
+												$slide_html = $slide_image_html;
+											}
+
+											echo sprintf( '<li>%s</li>', $slide_html ); // XSS Ok.
+										}
+									?>
 								</ul>
 							</div>
 						</div>
