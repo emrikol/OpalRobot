@@ -5,7 +5,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 
 Requires at least: 4.0
 Tested up to: 4.8
-Stable tag: 0.1.360
+Stable tag: 0.1.367
 License: GNU General Public License v2 or later
 License URI: LICENSE
 

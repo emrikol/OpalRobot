@@ -5,3 +5,6 @@
 [submodule "plugins/Flexslider-Admin"]
 	path = plugins/Flexslider-Admin
 	url = git@github.com:emrikol/Flexslider-Admin.git
+[submodule "plugins/cache-nav-menus"]
+	path = plugins/cache-nav-menus
+	url = git@github.com:Automattic/cache-nav-menus.git

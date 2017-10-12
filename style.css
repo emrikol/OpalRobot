@@ -5,7 +5,7 @@ Theme URI: http://underscores.me/
 Author: Derrick Tennant
 Author URI: http://underscores.me/
 Description: 🤖
-Version: 0.1.360
+Version: 0.1.367
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: opalrobot
@@ -3595,12 +3595,6 @@ a.text-dark:focus, a.text-dark:hover {
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
-.widget {
-  margin: 0 0 1.5em;
-  /* Make sure select elements fit in widgets. */ }
-  .widget select {
-    max-width: 100%; }
-
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
@@ -3637,16 +3631,6 @@ a.text-dark:focus, a.text-dark:hover {
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
-/* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .posts-navigation,
-.infinite-scroll.neverending .site-footer {
-  /* Theme Footer (when set to scrolling) */
-  display: none; }
-
-/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
-.infinity-end.neverending .site-footer {
-  display: block; }
-
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
@@ -3727,6 +3711,13 @@ img {
 		overflow-y: hidden;
 	}
 }*/
+a {
+  color: #ff6533; }
+  a:hover {
+    color: #ff9f80; }
+  a:visited {
+    color: #e63800; }
+
 body.admin-bar #primary-menu {
   padding-top: 46px; }
   @media (min-width: 768px) {

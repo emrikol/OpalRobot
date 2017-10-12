@@ -4,7 +4,7 @@ Theme URI: http://underscores.me/
 Author: Derrick Tennant
 Author URI: http://underscores.me/
 Description: 🤖
-Version: 0.1.360
+Version: 0.1.367
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: opalrobot
@@ -91,7 +91,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
-@import "site/secondary/widgets";
+//@import "site/secondary/widgets";
 
 /*--------------------------------------------------------------
 # Content
@@ -101,7 +101,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
-@import "modules/infinite-scroll";
+//@import "modules/infinite-scroll";
 
 /*--------------------------------------------------------------
 # Media
@@ -122,9 +122,32 @@ img {
 }*/
 
 // OpalRobot Variables
+$or-orange: #ff6533;
 $gray: #666666;
 $gray-light: #999999;
 $gray-lighter: #E6E6E6;
+
+$theme-colors: (
+  primary: $or-orange, //$blue,
+  //secondary: $gray-600,
+  //success: $green,
+  //info: $cyan,
+  //warning: $yellow,
+  //danger: $red,
+  //light: $gray-100,
+  //dark: $gray-800
+);
+
+// For some reason I couldn't get these to work with the default variable overrides
+a {
+	color: $or-orange;
+	&:hover {
+		color: lighten( $or-orange, 15% );
+	}
+	&:visited {
+		color: darken( $or-orange, 15% );
+	}
+}
 
 @import "nav-menu";
 

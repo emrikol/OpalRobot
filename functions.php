@@ -267,7 +267,7 @@ function opalrobot_serve_mime_types( $mimes ) {
 add_filter( 'mime_types', 'opalrobot_serve_mime_types' );
 
 if ( ! function_exists( 'wpcom_vip_cached_nav_menu' ) ) {
-	require_once( dirname( __FILE__ ) . '/plugins/cache-nav-menu.php' );
+	require_once( dirname( __FILE__ ) . '/plugins/cache-nav-menus/cache-nav-menu.php' );
 }
 
 function opalrobot_nav_menu( $args ) {
