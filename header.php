@@ -25,8 +25,8 @@
 								$custom_logo_desktop_url = get_theme_mod( 'custom_logo_desktop' );
 							?>
 								<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-									<img class='d-lg-none d-xl-none' src="<?php echo esc_url( $logo[0] ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" />
-									<img class='d-none d-lg-block' src="<?php echo esc_url( $custom_logo_desktop_url ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" />
+									<img class='d-lg-none d-xl-none' src="<?php echo esc_url( opalrobot_photonize_media( $logo[0] ) ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" />
+									<img class='d-none d-lg-block' src="<?php echo esc_url( opalrobot_photonize_media( $custom_logo_desktop_url ) ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" />
 								</a>
 						</div>
 
@@ -49,7 +49,7 @@
 							endif;
 
 							$description = get_bloginfo( 'description', 'display' );
-if ( $description || is_customize_preview() ) :
+							if ( $description || is_customize_preview() ) :
 							?>
 								<p class="site-description"><?php echo wp_kses_post( $description ); ?></p>
 							<?php
@@ -72,10 +72,6 @@ if ( $description || is_customize_preview() ) :
 
 							<?php if ( has_nav_menu( 'menu-1' ) ) : ?>
 							<nav id="site-navigation" class="main-navigation" role="navigation">
-								<!--button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-									<?php esc_html_e( 'Primary Menu', 'opalrobot' ); ?>
-								</button-->
-
 								<?php
 									opalrobot_nav_menu( array(
 										'theme_location' => 'menu-1',

@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php get_header();
+
+$link1_style = get_theme_mod( 'l_image_1_media' ) ? 'background-image: url( ' . esc_url( get_theme_mod( 'l_image_1_media' ) ) . ' );' : '';
+$link2_style = get_theme_mod( 'l_image_2_media' ) ? 'background-image: url( ' . esc_url( get_theme_mod( 'l_image_2_media' ) ) . ' );' : '';
+?>
 				<div id="primary" class="container content-area">
 					<div class="row">
 						<div class="col-12 col-lg-8">
@@ -41,30 +45,17 @@
 							</div>
 							<div class="secondary-links d-lg-none d-xl-none">
 								<div class="row justify-content-center align-items-center">
-									<div class="col-6"><a href="#">What to Expect</a></div>
-									<div class="col-6"><a href="#">Map/Directions</a></div>
+									<div class="col-6"><a style="<?php echo esc_attr( $link1_style ); ?>" href="<?php echo esc_url( get_theme_mod( 'l_image_1_url', '/' ) ); ?>"><?php echo esc_html( get_theme_mod( 'l_image_1_text', 'Link 1' ) ); ?></a></div>
+									<div class="col-6"><a style="<?php echo esc_attr( $link2_style ); ?>" href="<?php echo esc_url( get_theme_mod( 'l_image_2_url', '/' ) ); ?>"><?php echo esc_html( get_theme_mod( 'l_image_2_text', 'Link 2' ) ); ?></a></div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="d-none d-lg-block lg-tertiary">
 						<div class="tertiary-links">
-							<a class="image" href="#">What to Expect</a>
-							<a class="image" href="#">Map/Directions</a>
-							<div class="contact-information">
-								<p>
-									LINTON FIRST CHRISTIAN CHURCH<br/>
-									9878 West State Road 54<br/>
-									Linton, Indiana 47441<br/>
-									<a href="tel:+18128479535">812.847.9535</a><br/>
-								</p>
-								<ul class="leaders">
-									<li><span>1st Service</span><span>8:15 am</span></li>
-									<li><span>Classes</span><span>9:50 am</span></li>
-									<li><span>2nd Service</span><span>11:00 am</span></li>
-									<li><span>Prayer Meeting</span><span>Wed. 6:00 pm</span></li>
-								</ul>
-							</div>
+							<a class="image" style="<?php echo esc_attr( $link1_style ); ?>" href="<?php echo esc_url( get_theme_mod( 'l_image_1_url', '/' ) ); ?>"><?php echo esc_html( get_theme_mod( 'l_image_1_text', 'Link 1' ) ); ?></a>
+							<a class="image" style="<?php echo esc_attr( $link2_style ); ?>" href="<?php echo esc_url( get_theme_mod( 'l_image_2_url', '/' ) ); ?>"><?php echo esc_html( get_theme_mod( 'l_image_2_text', 'Link 2' ) ); ?></a>
+							<div class="contact-information"><?php echo wp_kses_post( get_theme_mod( 'l_textarea', 'Text Area 1' ) ); ?></div>
 						</div>
 					</div>
 				</div>

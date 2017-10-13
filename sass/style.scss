@@ -4,7 +4,7 @@ Theme URI: http://underscores.me/
 Author: Derrick Tennant
 Author URI: http://underscores.me/
 Description: 🤖
-Version: 0.1.367
+Version: 0.1.370
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: opalrobot
@@ -239,7 +239,6 @@ body {
 
 	a {
 		background-color: $gray-light;
-		background-image: url('images/button-bg.svg');
 		display: block;
 		width: 115px;
 		height: 38px;
@@ -351,12 +350,7 @@ body {
 		font-family: 'Open Sans Condensed', sans-serif;
 		font-weight: lighter;
 		margin: 0 auto;
-		background-image: url('images/what-to-expect-bg.svg');
 		font-size: 13px;
-	}
-
-	.col-6:nth-child(2) a {
-		background-image: url('images/map-directions-bg.jpg');
 	}
 
 	@include media-breakpoint-up(md) {
@@ -384,22 +378,18 @@ body {
 		margin: 0 auto;
 	}
 	.col-3:nth-child(1) a {
-		background-image: url('images/wee-village.svg');
 		width: 58.65px;
 		height: 19.248px;
 	}
 	.col-3:nth-child(2) a {
-		background-image: url('images/marketplace.svg');
 		width: 51.088px;
 		height: 19.55px;
 	}
 	.col-3:nth-child(3) a {
-		background-image: url('images/courtyard.svg');
 		width: 31.811px;
 		height: 24.438px;
 	}
 	.col-3:nth-child(4) a {
-		background-image: url('images/highway-111.svg');
 		width: 24.436px;
 		height: 24.438px;
 	}
@@ -600,12 +590,10 @@ body {
 		font-family: 'Open Sans Condensed', sans-serif;
 		font-weight: lighter;
 		margin: 0px;
-		background-image: url('images/what-to-expect-bg.svg');
 		font-size: 32px;
 
 		&:nth-child(2) {
 			left: 36px + 286px + 28px; // left padding + width + center padding.
-			background-image: url('images/map-directions-bg.jpg');
 		}
 
 	}

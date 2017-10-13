@@ -52,3 +52,18 @@ function opalrobot_infinite_scroll_render() {
 		endif;
 	}
 }
+
+// Photonize Theme Images.
+function opalrobot_photonize_media( $url ) {
+	if ( function_exists( 'jetpack_photon_url' ) && false === strpos( $url, '.svg' ) ) {
+		return jetpack_photon_url( $url );
+	}
+	return $url;
+}
+add_filter( 'theme_mod_l_image_1_media', 'opalrobot_photonize_media', 10, 1 );
+add_filter( 'theme_mod_l_image_2_media', 'opalrobot_photonize_media', 10, 1 );
+add_filter( 'theme_mod_t_link_1_media', 'opalrobot_photonize_media', 10, 1 );
+add_filter( 'theme_mod_t_link_2_media', 'opalrobot_photonize_media', 10, 1 );
+add_filter( 'theme_mod_t_link_3_media', 'opalrobot_photonize_media', 10, 1 );
+add_filter( 'theme_mod_t_link_4_media', 'opalrobot_photonize_media', 10, 1 );
+add_filter( 'theme_mod_secondary_link_media', 'opalrobot_photonize_media', 10, 1 );

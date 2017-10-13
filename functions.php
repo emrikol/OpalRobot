@@ -140,27 +140,9 @@ add_action( 'after_setup_theme', 'opalrobot_setup' );
  * @global int $content_width
  */
 function opalrobot_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'opalrobot_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'opalrobot_content_width', 750 );
 }
 add_action( 'after_setup_theme', 'opalrobot_content_width', 0 );
-
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function opalrobot_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'opalrobot' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'opalrobot' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'opalrobot_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
@@ -209,13 +191,9 @@ EOT;
 		wp_localize_script( 'flexslider', 'flexslider_admin', $flexslider_vars );
 	}
 
-	/*
-	wp_enqueue_script( 'opalrobot-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-	*/
 }
 add_action( 'wp_enqueue_scripts', 'opalrobot_scripts' );
 
@@ -279,3 +257,50 @@ function opalrobot_nav_menu( $args ) {
 }
 
 require_once( dirname( __FILE__ ) . '/plugins/Flexslider-Admin/flexslider-admin.php' );
+
+
+function opalrobot_create_default_menus() {
+	if ( ! wp_get_nav_menu_object( 'Secondary Navigation [Theme Default]' ) ) {
+		$menu_id = wp_create_nav_menu( 'Secondary Navigation [Theme Default]' );
+		if ( ! is_wp_error( $menu_id ) ) {
+			$locations = get_theme_mod( 'nav_menu_locations' );
+			$locations['menu-2'] = $menu_id;
+			set_theme_mod( 'nav_menu_locations', $locations );
+
+			$menu_item_data = array(
+				'menu-item-title' => 'Events', // Title
+				'menu-item-name' => 'events', // Slug
+				'menu-item-url' => '/events', // URL
+				'menu-item-status' => 'publish',
+			);
+			wp_update_nav_menu_item( $menu_id, 0, $menu_item_data );
+
+			$menu_item_data = array(
+				'menu-item-title' => 'Connect', // Title
+				'menu-item-name' => 'connect', // Slug
+				'menu-item-url' => '/connect', // URL
+				'menu-item-status' => 'publish',
+			);
+			wp_update_nav_menu_item( $menu_id, 0, $menu_item_data );
+
+			$menu_item_data = array(
+				'menu-item-title' => 'Livestream', // Title
+				'menu-item-name' => 'livestream', // Slug
+				'menu-item-url' => '/livestream', // URL
+				'menu-item-status' => 'publish',
+			);
+			wp_update_nav_menu_item( $menu_id, 0, $menu_item_data );
+
+			$menu_item_data = array(
+				'menu-item-title' => 'Archive', // Title
+				'menu-item-name' => 'archive', // Slug
+				'menu-item-url' => '/archive', // URL
+				'menu-item-status' => 'publish',
+			);
+			wp_update_nav_menu_item( $menu_id, 0, $menu_item_data );
+		}
+	}
+
+}
+
+add_action( 'wp_loaded', 'opalrobot_create_default_menus' );
