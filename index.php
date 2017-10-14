@@ -11,8 +11,8 @@ $link2_style = get_theme_mod( 'l_image_2_media' ) ? 'background-image: url( ' . 
 									<?php
 									foreach ( Flexslider_Admin::get_slides() as $slide_id => $slide ) {
 										$slide_image_html = get_the_post_thumbnail( $slide_id );
-										$slide_title = get_the_title( $slide_id );
-										$slide_link = $slide['url'];
+										$slide_title      = get_the_title( $slide_id );
+										$slide_link       = $slide['url'];
 
 										if ( ! empty( $slide_link ) ) {
 											$slide_html = sprintf( '<a href="%s" title="%s">%s</a>',
@@ -35,10 +35,10 @@ $link2_style = get_theme_mod( 'l_image_2_media' ) ? 'background-image: url( ' . 
 								<div class="row justify-content-between align-items-center">
 									<?php
 										opalrobot_nav_menu( array(
-											'container' => '',
+											'container'  => '',
 											'theme_location' => 'menu-2',
 											'items_wrap' => '%3$s',
-											'walker'  => new OpalRobot_Default_Secondary_Walker(),
+											'walker'     => new OpalRobot_Default_Secondary_Walker(),
 										) );
 									?>
 								</div>

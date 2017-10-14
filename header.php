@@ -20,8 +20,8 @@
 
 						<div class="site-branding col has-logo">
 							<?php
-								$custom_logo_id = get_theme_mod( 'custom_logo' );
-								$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+								$custom_logo_id          = get_theme_mod( 'custom_logo' );
+								$logo                    = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 								$custom_logo_desktop_url = get_theme_mod( 'custom_logo_desktop' );
 							?>
 								<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -49,9 +49,9 @@
 							endif;
 
 							$description = get_bloginfo( 'description', 'display' );
-							if ( $description || is_customize_preview() ) :
-							?>
-								<p class="site-description"><?php echo wp_kses_post( $description ); ?></p>
+if ( $description || is_customize_preview() ) :
+?>
+	<p class="site-description"><?php echo wp_kses_post( $description ); ?></p>
 							<?php
 							endif;
 							?>
@@ -75,8 +75,8 @@
 								<?php
 									opalrobot_nav_menu( array(
 										'theme_location' => 'menu-1',
-										'menu_id' => 'primary-menu',
-										'container' => false,
+										'menu_id'        => 'primary-menu',
+										'container'      => false,
 									) );
 								?>
 							</nav>

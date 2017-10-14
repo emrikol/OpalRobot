@@ -29,10 +29,10 @@ $link2_style = get_theme_mod( 'l_image_2_media' ) ? 'background-image: url( ' . 
 								<div class="row justify-content-between align-items-center">
 									<?php
 										opalrobot_nav_menu( array(
-											'container' => '',
+											'container'  => '',
 											'theme_location' => 'menu-2',
 											'items_wrap' => '%3$s',
-											'walker'  => new OpalRobot_Default_Secondary_Walker(),
+											'walker'     => new OpalRobot_Default_Secondary_Walker(),
 										) );
 									?>
 								</div>

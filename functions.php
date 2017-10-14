@@ -83,34 +83,34 @@ if ( ! function_exists( 'opalrobot_setup' ) ) :
 
 		$sizes = array(
 			array(
-				'name' => 'slides-xl',
-				'width' => '750',
+				'name'   => 'slides-xl',
+				'width'  => '750',
 				'height' => '422',
-				'crop' => true,
+				'crop'   => true,
 			),
 			array(
-				'name' => 'slides-lg',
-				'width' => '600',
+				'name'   => 'slides-lg',
+				'width'  => '600',
 				'height' => '337',
-				'crop' => true,
+				'crop'   => true,
 			),
 			array(
-				'name' => 'slides-md',
-				'width' => '618',
+				'name'   => 'slides-md',
+				'width'  => '618',
 				'height' => '348',
-				'crop' => true,
+				'crop'   => true,
 			),
 			array(
-				'name' => 'slides-sm',
-				'width' => '510',
+				'name'   => 'slides-sm',
+				'width'  => '510',
 				'height' => '287',
-				'crop' => true,
+				'crop'   => true,
 			),
 			array(
-				'name' => 'slides-thumbnail',
-				'width' => '150',
+				'name'   => 'slides-thumbnail',
+				'width'  => '150',
 				'height' => '84',
-				'crop' => true,
+				'crop'   => true,
 			),
 		);
 
@@ -156,15 +156,15 @@ function opalrobot_scripts() {
 
 		$flexslider_vars = array(
 			'data' => array(
-				'animation' => get_theme_mod( 'fsa-slides_animation', 'fade' ),
-				'easing' => get_theme_mod( 'fsa-slides_easing', 'swing' ),
-				'direction' => get_theme_mod( 'fsa-slides_direction', 'horizontal' ),
+				'animation'      => get_theme_mod( 'fsa-slides_animation', 'fade' ),
+				'easing'         => get_theme_mod( 'fsa-slides_easing', 'swing' ),
+				'direction'      => get_theme_mod( 'fsa-slides_direction', 'horizontal' ),
 				'slideshowSpeed' => ( get_theme_mod( 'fsa-slides_speed' ) ? get_theme_mod( 'fsa-slides_speed' ) : 7 ) * 1000,
 				'animationSpeed' => ( get_theme_mod( 'fsa-slides_animation_speed' ) ? get_theme_mod( 'fsa-slides_animation_speed' ) : .6 ) * 1000,
-				'initDelay' => ( get_theme_mod( 'fsa-slides_start_delay' ) ? get_theme_mod( 'fsa-slides_start_delay' ) : 0 ) * 1000,
-				'reverse' => get_theme_mod( 'fsa-slides_reverse' ) ? get_theme_mod( 'fsa-slides_reverse' ) : false,
-				'pauseOnAction' => get_theme_mod( 'fsa-slides_pause_interaction' ) ? get_theme_mod( 'fsa-slides_pause_interaction' ) : false,
-				'pauseOnHover' => get_theme_mod( 'fsa-slides_pause_hover' ) ? get_theme_mod( 'fsa-slides_pause_hover' ) : true,
+				'initDelay'      => ( get_theme_mod( 'fsa-slides_start_delay' ) ? get_theme_mod( 'fsa-slides_start_delay' ) : 0 ) * 1000,
+				'reverse'        => get_theme_mod( 'fsa-slides_reverse' ) ? get_theme_mod( 'fsa-slides_reverse' ) : false,
+				'pauseOnAction'  => get_theme_mod( 'fsa-slides_pause_interaction' ) ? get_theme_mod( 'fsa-slides_pause_interaction' ) : false,
+				'pauseOnHover'   => get_theme_mod( 'fsa-slides_pause_hover' ) ? get_theme_mod( 'fsa-slides_pause_hover' ) : true,
 			),
 		);
 
@@ -231,21 +231,21 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 function opalrobot_upload_mime_types( $mimes ) {
-	$mimes['svg'] = 'image/svg+xml';
+	$mimes['svg']  = 'image/svg+xml';
 	$mimes['svgz'] = 'image/svg+xml';
 	return $mimes;
 }
 add_filter( 'upload_mimes', 'opalrobot_upload_mime_types' );
 
 function opalrobot_serve_mime_types( $mimes ) {
-	$mimes['svg'] = 'image/svg+xml';
+	$mimes['svg']  = 'image/svg+xml';
 	$mimes['svgz'] = 'image/svg+xml';
 	return $mimes;
 }
 add_filter( 'mime_types', 'opalrobot_serve_mime_types' );
 
 if ( ! function_exists( 'wpcom_vip_cached_nav_menu' ) ) {
-	require_once( dirname( __FILE__ ) . '/plugins/cache-nav-menus/cache-nav-menu.php' );
+	require_once dirname( __FILE__ ) . '/plugins/cache-nav-menus/cache-nav-menu.php';
 }
 
 function opalrobot_nav_menu( $args ) {
@@ -256,45 +256,45 @@ function opalrobot_nav_menu( $args ) {
 	}
 }
 
-require_once( dirname( __FILE__ ) . '/plugins/Flexslider-Admin/flexslider-admin.php' );
+require_once dirname( __FILE__ ) . '/plugins/Flexslider-Admin/flexslider-admin.php';
 
 
 function opalrobot_create_default_menus() {
 	if ( ! wp_get_nav_menu_object( 'Secondary Navigation [Theme Default]' ) ) {
 		$menu_id = wp_create_nav_menu( 'Secondary Navigation [Theme Default]' );
 		if ( ! is_wp_error( $menu_id ) ) {
-			$locations = get_theme_mod( 'nav_menu_locations' );
+			$locations           = get_theme_mod( 'nav_menu_locations' );
 			$locations['menu-2'] = $menu_id;
 			set_theme_mod( 'nav_menu_locations', $locations );
 
 			$menu_item_data = array(
-				'menu-item-title' => 'Events', // Title
-				'menu-item-name' => 'events', // Slug
-				'menu-item-url' => '/events', // URL
+				'menu-item-title'  => 'Events', // Title
+				'menu-item-name'   => 'events', // Slug
+				'menu-item-url'    => '/events', // URL
 				'menu-item-status' => 'publish',
 			);
 			wp_update_nav_menu_item( $menu_id, 0, $menu_item_data );
 
 			$menu_item_data = array(
-				'menu-item-title' => 'Connect', // Title
-				'menu-item-name' => 'connect', // Slug
-				'menu-item-url' => '/connect', // URL
+				'menu-item-title'  => 'Connect', // Title
+				'menu-item-name'   => 'connect', // Slug
+				'menu-item-url'    => '/connect', // URL
 				'menu-item-status' => 'publish',
 			);
 			wp_update_nav_menu_item( $menu_id, 0, $menu_item_data );
 
 			$menu_item_data = array(
-				'menu-item-title' => 'Livestream', // Title
-				'menu-item-name' => 'livestream', // Slug
-				'menu-item-url' => '/livestream', // URL
+				'menu-item-title'  => 'Livestream', // Title
+				'menu-item-name'   => 'livestream', // Slug
+				'menu-item-url'    => '/livestream', // URL
 				'menu-item-status' => 'publish',
 			);
 			wp_update_nav_menu_item( $menu_id, 0, $menu_item_data );
 
 			$menu_item_data = array(
-				'menu-item-title' => 'Archive', // Title
-				'menu-item-name' => 'archive', // Slug
-				'menu-item-url' => '/archive', // URL
+				'menu-item-title'  => 'Archive', // Title
+				'menu-item-name'   => 'archive', // Slug
+				'menu-item-url'    => '/archive', // URL
 				'menu-item-status' => 'publish',
 			);
 			wp_update_nav_menu_item( $menu_id, 0, $menu_item_data );

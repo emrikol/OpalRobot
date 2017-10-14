@@ -18,12 +18,12 @@
  */
 function opalrobot_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'opalrobot_custom_header_args', array(
-		'default-image'          => '',
-		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
-		'flex-height'            => true,
-		'wp-head-callback'       => 'opalrobot_header_style',
+		'default-image'      => '',
+		'default-text-color' => '000000',
+		'width'              => 1000,
+		'height'             => 250,
+		'flex-height'        => true,
+		'wp-head-callback'   => 'opalrobot_header_style',
 	) ) );
 }
 add_action( 'after_setup_theme', 'opalrobot_custom_header_setup' );

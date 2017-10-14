@@ -3,7 +3,7 @@ class OpalRobot_Default_Secondary_Walker extends Walker {
 
 	var $db_fields = array(
 		'parent' => 'menu_item_parent',
-		'id' => 'db_id',
+		'id'     => 'db_id',
 	);
 
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
