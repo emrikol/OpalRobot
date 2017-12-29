@@ -5,7 +5,7 @@ Theme URI: http://underscores.me/
 Author: Derrick Tennant
 Author URI: http://underscores.me/
 Description: 🤖
-Version: 0.1.370
+Version: 0.1.394
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: opalrobot
@@ -3729,7 +3729,6 @@ body.admin-bar #primary-menu {
   top: 0px;
   left: 0px;
   z-index: 15;
-  height: 300px;
   font-size: 20px;
   background: red;
   width: 100%;
@@ -3860,6 +3859,30 @@ body.admin-bar #primary-menu {
     transform: rotate(-90deg);
     transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+.sub-menu {
+  list-style-type: none; }
+
+@media (min-width: 768px) {
+  #primary-menu ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: auto;
+    z-index: 1; }
+    #primary-menu ul ul {
+      top: 0;
+      left: 100%;
+      right: auto; }
+  #primary-menu.dropdownJavaScript li.menu-item-has-children > ul {
+    display: none;
+    padding: 10px;
+    background: #E6E6E6;
+    z-index: 5; }
+    #primary-menu.dropdownJavaScript li.menu-item-has-children > ul li {
+      display: block; }
+  #primary-menu.dropdownJavaScript li.dropdownOpen > ul {
+    display: block !important; } }
 body {
   background-color: #E6E6E6; }
 

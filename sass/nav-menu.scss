@@ -14,7 +14,7 @@ body {
 	top: 0px;
 	left: 0px;
 	z-index: 15;
-	height: 300px;
+	//height: 300px;
 	font-size: 20px;
 	background: red;
 	width: 100%;
@@ -227,6 +227,48 @@ $hamburger-layer-color: $gray-lighter;
 				transform: rotate(-90deg);
 				transition: bottom 0.075s ease,
 				transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+			}
+		}
+	}
+}
+
+// Dropdown CSS
+.sub-menu {
+	list-style-type: none;
+}
+@include media-breakpoint-up(md) {
+	#primary-menu {
+		ul {
+			display	: none;
+			position : absolute;
+			top: 100%;
+			left: 0;
+			right: auto;
+			z-index: 1;
+
+			ul {
+				top: 0;
+				left: 100%;
+				right: auto;
+			}
+		}
+
+		&.dropdownJavaScript {
+			li.menu-item-has-children {
+				&>ul {
+					display: none;
+					padding: 10px;
+					background: $gray-lighter;
+					z-index: 5;
+
+					li {
+						display: block;
+					}
+				}
+			}
+
+			li.dropdownOpen > ul {
+				display: block !important;
 			}
 		}
 	}

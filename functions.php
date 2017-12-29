@@ -191,6 +191,15 @@ EOT;
 		wp_localize_script( 'flexslider', 'flexslider_admin', $flexslider_vars );
 	}
 
+	$dropdown_inline = <<<EOT
+jQuery( window ).load( function() {
+	Dropdown.initialise;
+	Dropdown.applyTo( 'primary-menu' );
+} );
+EOT;
+	wp_enqueue_script( 'Dropdown', get_stylesheet_directory_uri() . '/js/Dropdown.js', array( 'jquery' ) );
+	wp_add_inline_script( 'Dropdown', $dropdown_inline );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
