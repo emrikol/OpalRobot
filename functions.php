@@ -244,6 +244,94 @@ function opalrobot_serve_mime_types( $mimes ) {
 }
 add_filter( 'mime_types', 'opalrobot_serve_mime_types' );
 
+function opalrobot_check_filetype_and_ext( $data = null, $file = null, $filename = null, $mimes = null ) {
+	$ext = isset( $data['ext'] ) ? $data['ext'] : '';
+
+	if ( strlen( $ext ) < 1 ) {
+		$exploded = explode( '.', $filename );
+		$ext = strtolower( end( $exploded ) );
+	}
+	if ( 'svg' === $ext ) {
+		$data['type'] = 'image/svg+xml';
+		$data['ext']  = 'svg';
+	} elseif ( 'svgz' === $ext ) {
+		$data['type'] = 'image/svg+xml';
+		$data['ext']  = 'svgz';
+	}
+
+	return $data;
+}
+add_filter( 'wp_check_filetype_and_ext', 'opalrobot_check_filetype_and_ext', 100, 4 );
+
+function opalrobot_svg_fix_admin_preview( $response, $attachment, $meta ) {
+
+	if ( 'image/svg+xml' === $response['mime'] ) {
+		$possible_sizes = apply_filters(
+			'image_size_names_choose', array(
+				'thumbnail' => __( 'Thumbnail' ),
+				'medium'    => __( 'Medium' ),
+				'large'     => __( 'Large' ),
+				'full'      => __( 'Full Size' ),
+			)
+		);
+
+		$sizes = array();
+
+		foreach ( $possible_sizes as $size => $label ) {
+			$sizes[ $size ] = array(
+				'height'      => 2000,
+				'width'       => 2000,
+				'url'         => $response['url'],
+				'orientation' => 'portrait',
+			);
+		}
+
+		$response['sizes'] = $sizes;
+		$response['icon'] = $response['url'];
+	}
+
+	return $response;
+}
+add_filter( 'wp_prepare_attachment_for_js', 'opalrobot_svg_fix_admin_preview', 10, 3 );
+
+function opalrobot_svg_load_admin_css_fix() {
+	wp_enqueue_style( 'opalrobot-css-admin-fix', get_stylesheet_directory_uri() . '/admin-svg-fix.css', array() );
+}
+add_action( 'admin_enqueue_scripts', 'opalrobot_svg_load_admin_css_fix' );
+
+function opalrobot_svg_one_pixel_fix( $image, $attachment_id, $size, $icon ) {
+	if ( 'image/svg+xml' === get_post_mime_type( $attachment_id ) ) {
+		$image['1'] = false;
+		$image['2'] = false;
+	}
+
+	return $image;
+}
+add_filter( 'wp_get_attachment_image_src', 'opalrobot_svg_one_pixel_fix', 10, 4 );
+
+function opalrobot_svg_featured_image_fix( $content, $post_id, $thumbnail_id ) {
+	$mime = get_post_mime_type( $thumbnail_id );
+
+	if ( 'image/svg+xml' === $mime ) {
+		$content = sprintf( '<span class="svg">%s</span>', $content );
+	}
+
+	return $content;
+}
+add_filter( 'admin_post_thumbnail_html', 'opalrobot_svg_featured_image_fix', 10, 3 );
+
+function opalrobot_svg_get_image_tag_override( $html, $id, $alt, $title, $align, $size ) {
+	$mime = get_post_mime_type( $id );
+
+	if ( 'image/svg+xml' === $mime ) {
+		$html = str_replace( 'width="1" ', '', $html );
+		$html = str_replace( 'height="1" ', '', $html );
+	}
+
+	return $html;
+}
+add_action( 'get_image_tag', 'opalrobot_svg_get_image_tag_override', 10, 6 );
+
 if ( ! function_exists( 'wpcom_vip_cached_nav_menu' ) ) {
 	require_once dirname( __FILE__ ) . '/plugins/cache-nav-menus/cache-nav-menu.php';
 }
