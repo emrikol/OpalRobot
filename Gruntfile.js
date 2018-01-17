@@ -51,6 +51,14 @@ module.exports = function( grunt ) {
 					'fonts/**',
 				],
 				dest: 'flexslider/'
+			},
+			plugins: {
+				expand: true,
+				cwd: '_build/plugins',
+				src: [
+					'**',
+				],
+				dest: 'plugins/'
 			}
 		},
 
@@ -167,7 +175,7 @@ module.exports = function( grunt ) {
 
 	require( 'load-grunt-tasks' )( grunt );
 
-	grunt.registerTask( 'build', [ 'sass', 'exec:postcss' ] );
+	grunt.registerTask( 'build', [ 'copy', 'sass', 'exec:postcss' ] );
 	grunt.registerTask( 'flexslider', [ 'copy:flexslider', 'cssmin:flexslider' ] );
 	grunt.registerTask( 'readme', [ 'shell' ] );
 	grunt.registerTask( 'release', [ 'clean', 'copy', 'replace', 'compress' ] );
