@@ -1,6 +1,7 @@
 .flexslider {
   border-radius: 0px;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   margin: 0px;
   border: none; }
   @media (min-width: 576px) {

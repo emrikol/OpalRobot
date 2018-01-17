@@ -1,0 +1,1 @@
+{"version":3,"sources":["admin-svg-fix.css"],"names":[],"mappings":"AAAA;;GAEG;AACH;CACC,YAAY;CACZ","file":"admin-svg-fix.css","sourcesContent":["/**\n * Fix SVGs not showing correctly as featured images, borrowed from https://wordpress.org/plugins/safe-svg/\n */\n#postimagediv .inside .svg img {\n\twidth: 100%;\n}"]}
