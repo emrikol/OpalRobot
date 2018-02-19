@@ -169,6 +169,24 @@ module.exports = function( grunt ) {
 					}]
 				}
 			}
+		},
+
+		'sftp-deploy': {
+			build: {
+				auth: {
+					host: 'sftp.pressable.com',
+					port: 22,
+					authKey: 'pressable-prod'
+				},
+				cache: 'sftpCache.json',
+				src: '/var/www/wp-content/themes/OpalRobot',
+				dest: '/lfcc/wp-content/themes/OpalRobot',
+				exclusions: ['/var/www/wp-content/themes/OpalRobot/**/.DS_Store', '/var/www/wp-content/themes/OpalRobot/**/Thumbs.db', '/var/www/wp-content/themes/OpalRobot/node_modules', '/var/www/wp-content/themes/OpalRobot/.git', '/var/www/wp-content/themes/OpalRobot/.ftppass'],
+				serverSep: '/',
+				localSep: '/',
+				concurrency: 4,
+				progress: true
+			}
 		}
 
 	} );
@@ -179,6 +197,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'flexslider', [ 'copy:flexslider', 'cssmin:flexslider' ] );
 	grunt.registerTask( 'readme', [ 'shell' ] );
 	grunt.registerTask( 'release', [ 'clean', 'copy', 'replace', 'compress' ] );
+	grunt.registerTask( 'deploy', [ 'copy', 'sass', 'exec:postcss', 'sftp-deploy' ] );
 
 	grunt.util.linefeed = '\n';
 };

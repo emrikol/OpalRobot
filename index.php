@@ -9,22 +9,25 @@ $link2_style = get_theme_mod( 'l_image_2_media' ) ? 'background-image: url( ' . 
 							<div class="flexslider">
 								<ul class="slides">
 									<?php
-									foreach ( Flexslider_Admin::get_slides() as $slide_id => $slide ) {
-										$slide_image_html = get_the_post_thumbnail( $slide_id );
-										$slide_title      = get_the_title( $slide_id );
-										$slide_link       = $slide['url'];
+									if ( ! empty( Flexslider_Admin::get_slides() ) ) {
+										foreach ( Flexslider_Admin::get_slides() as $slide_id => $slide ) {
+											$slide_image_html = get_the_post_thumbnail( $slide_id );
+											$slide_title      = get_the_title( $slide_id );
+											$slide_link       = $slide['url'];
 
-										if ( ! empty( $slide_link ) ) {
-											$slide_html = sprintf( '<a href="%s" title="%s">%s</a>',
-												esc_url( $slide_link ),
-												esc_attr( $slide_title ),
-												$slide_image_html
-											);
-										} else {
-											$slide_html = $slide_image_html;
+											if ( ! empty( $slide_link ) ) {
+												$slide_html = sprintf( '<a href="%s" title="%s">%s</a>',
+													esc_url( $slide_link ),
+													esc_attr( $slide_title ),
+													$slide_image_html
+												);
+											} else {
+												$slide_html = $slide_image_html;
+											}
+
 										}
-
-										echo sprintf( '<li>%s</li>', $slide_html ); // XSS Ok.
+									} else {
+										echo '<li><img src="' . esc_url( opalrobot_photonize_media( get_theme_mod( 'backup_slide_media' ) ) ) . '" /></li>';
 									}
 									?>
 								</ul>

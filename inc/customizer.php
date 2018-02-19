@@ -36,6 +36,15 @@ function opalrobot_customizer_theme_settings( $wp_customize ) {
 		'settings' => 'secondary_link_media',
 	) ) );
 
+	// Fallback Slide Media.
+	$wp_customize->add_setting( 'backup_slide_media' );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'backup_slide_media', array(
+		'label'    => esc_html__( 'Backup Slide Media', 'opalrobot' ),
+		'section'  => 'fsa-slides',
+		'settings' => 'backup_slide_media',
+	) ) );
+
 	for ( $i = 1; $i <= 2; $i++ ) {
 		// Large Image Link Media.
 		$wp_customize->add_setting( sprintf( 'l_image_%d_media', (int) $i ) );
